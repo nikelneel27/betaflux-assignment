@@ -8,7 +8,9 @@ function Main() {
     <MainContainer>
       <p>Hi There,</p>
       <h2>Welcome to your Dashboard</h2>
-      <Container></Container>
+      <Container>
+        <UserData></UserData>
+      </Container>
     </MainContainer>
   );
 }
