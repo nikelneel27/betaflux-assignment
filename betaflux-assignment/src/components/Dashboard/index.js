@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Container } from "./styles";
+import Sidebar from "./components/Sidebar";
+import Main from "./components/Main";
 
 function Dashboard() {
-    return (
-        <div>
-            <h1>Dashboard</h1>
-        </div>
-    )
+  return (
+    <Container>
+      <Sidebar></Sidebar>
+      <Main></Main>
+    </Container>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
