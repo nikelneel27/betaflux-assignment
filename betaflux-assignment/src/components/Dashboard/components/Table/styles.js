@@ -4,6 +4,7 @@ export const CheckBox = styled.input``;
 export const TableSection = styled.table`
   width: 100%;
   display: block;
+  border-collapse: collapse !important;
 `;
 
 export const TableBody = styled.tbody`
@@ -13,13 +14,22 @@ export const TableBody = styled.tbody`
 `;
 export const TableHead = styled.thead`
   background-color: #000;
+  border: none !important;
+  border-spacing: 0 !important;
+
   color: #fff;
 `;
 export const TableRow = styled.tr``;
 
 export const Th = styled.th`
+  padding: 5px 0;
   text-align: left;
-  max-width: ${(props) => props.width};
+  font-weight: 500;
+  width: ${(props) => props.width};
+  &:nth-child(1),
+  &:nth-child(7) {
+    padding: 0 3px 0 3px;
+  }
 `;
 export const TableData = styled.td`
   padding: 10px 0;
@@ -27,7 +37,9 @@ export const TableData = styled.td`
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 12px;
-  width: ${(props) => props.width};
+  max-width: 40px;
+  border-bottom: 1px solid #eeeeee;
+  max-width: ${(props) => props.width};
 `;
 
 export const TableDiv = styled.div`
@@ -35,4 +47,11 @@ export const TableDiv = styled.div`
   color: #fff;
   display: flex;
   justify-content: space-around;
+`;
+export const UserImage = styled.img`
+  border-radius: 50px;
+  width: 100%;
+  max-width: 30px;
+  height: 30px;
+  margin-right: 8px;
 `;

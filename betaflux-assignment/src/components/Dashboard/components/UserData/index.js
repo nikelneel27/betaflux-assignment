@@ -15,6 +15,7 @@ import {
   DateFilter,
   StatusFilter,
   FilterSectionDiv,
+  Icon,
 } from "./styles";
 
 export const UserContext = createContext();
@@ -22,9 +23,10 @@ export const UserContext = createContext();
 function UserData() {
   const [userName, setUserName] = useState("");
   const [DOB, setDOB] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   return (
-    <UserContext.Provider value={{ userName, DOB }}>
+    <UserContext.Provider value={{ userName, DOB, selectedStatus }}>
       <Container>
         <FilterSection>
           <FilterSectionDiv>
@@ -33,6 +35,7 @@ function UserData() {
               placeholder="search"
               onChange={(e) => setUserName(e.target.value)}
             ></Search>
+            {/* <Icon className="fas fa-search"></Icon> */}
           </FilterSectionDiv>
           <FilterSectionDiv>
             <DateFilter
@@ -40,9 +43,15 @@ function UserData() {
               placeholder="All Dates"
               onChange={(e) => setDOB(e.target.value)}
             ></DateFilter>
-            <StatusFilter placeholder="Status">
-              <option value="Approved">Approved</option>
+            <StatusFilter
+              onChange={(e) => setSelectedStatus(e.target.value)}
+              placeholder="Status"
+            >
+              <option>Choose Status</option>
+              <option value="Answered">Answered</option>
               <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
             </StatusFilter>
           </FilterSectionDiv>
         </FilterSection>

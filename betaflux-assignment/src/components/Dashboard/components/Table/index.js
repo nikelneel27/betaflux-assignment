@@ -11,18 +11,25 @@ import {
   TableDiv,
   TableHead,
   TableBody,
+  UserImage,
 } from "./styles";
 
 function Table() {
-  const { userName, DOB } = useContext(UserContext);
+  const { userName, DOB, selectedStatus } = useContext(UserContext);
 
   const [randomUser, SetRandomUser] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
 
+  const randomStatus = ["Answered", "Pending", "Approved", "Rejected"];
+
   const fetchData = () => {
     userdata().then((results) => {
+      results.forEach((object) => {
+        object.status =
+          randomStatus[Math.floor(Math.random() * randomStatus.length)];
+      });
       SetRandomUser(randomUser.concat(results));
     });
   };
@@ -48,12 +55,17 @@ function Table() {
   const renderTableBody = () => {
     const dob = DOB.split("-");
     const formattedDob = `${dob[2]}.${dob[1]}.${dob[0]}`;
+
     let userList = randomUser;
-    if (userName !== "" || DOB !== "") {
+    if (userName !== "" || DOB !== "" || selectedStatus !== "") {
       userList = randomUser.filter((e) => {
         if (
           (renderDate(e.dob.date).match(formattedDob) && !userName) ||
-          (e.name.first.toLowerCase().includes(userName.toLowerCase()) && !DOB)
+          (e.name.first.toLowerCase().includes(userName.toLowerCase()) &&
+            !DOB) ||
+          (e.status.toLowerCase().includes(selectedStatus.toLowerCase()) &&
+            !userName &&
+            !DOB)
         ) {
           return e;
         }
@@ -70,16 +82,24 @@ function Table() {
         <TableData width="5%">
           <CheckBox type="checkbox"></CheckBox>
         </TableData>
+
         <TableData width="20%">
-          {e.name.first} {e.name.last}
+          <span>
+            <UserImage src={e.picture.thumbnail} alt="" />
+          </span>
+          <span>
+            {" "}
+            {e.name.first} {e.name.last}
+          </span>
         </TableData>
+
         <TableData width="30%">
           {e.location.street.number},{e.location.street.name}
           {e.location.city},{e.location.country}
         </TableData>
         <TableData width="20%">{e.phone}</TableData>
         <TableData width="10%"> {renderDate(e.dob.date)}</TableData>
-        <TableData width="10%">Pending</TableData>
+        <TableData width="10%">{e.status}</TableData>
         <TableData width="5%">...</TableData>
       </TableRow>
     ));
@@ -104,7 +124,7 @@ function Table() {
         dataLength={randomUser.length}
         next={() => fetchData()}
         hasMore={true}
-        height={175}
+        height={210}
       >
         <TableBody>{renderTableBody()}</TableBody>
       </InfiniteScroll>

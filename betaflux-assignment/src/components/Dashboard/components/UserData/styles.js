@@ -42,3 +42,6 @@ export const DateFilter = styled.input`
 export const FilterSectionDiv = styled.div`
   padding: 20px;
 `;
+export const Icon = styled.i`
+  position: absolute;
+`;
