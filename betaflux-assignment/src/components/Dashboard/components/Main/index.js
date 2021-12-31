@@ -5,7 +5,7 @@ import { Container, MainContainer } from "./styles";
 
 function Main() {
   return (
-    <MainContainer>
+    <MainContainer style={{ maxHeight: "100vh" }}>
       <p>Hi There,</p>
       <h2>Welcome to your Dashboard</h2>
       <Container>

@@ -1,6 +1,7 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, useContext, Suspense } from "react";
 import { userdata } from "../../../../apis/userdata";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { UserContext } from "../UserData/index";
 import {
   TableSection,
   TableRow,
@@ -13,6 +14,8 @@ import {
 } from "./styles";
 
 function Table() {
+  const { userName, DOB } = useContext(UserContext);
+
   const [randomUser, SetRandomUser] = useState([]);
   useEffect(() => {
     fetchData();
@@ -43,8 +46,27 @@ function Table() {
   };
 
   const renderTableBody = () => {
-    return randomUser.map((e) => (
-      <TableRow>
+    const dob = DOB.split("-");
+    const formattedDob = `${dob[2]}.${dob[1]}.${dob[0]}`;
+    let userList = randomUser;
+    if (userName !== "" || DOB !== "") {
+      userList = randomUser.filter((e) => {
+        if (
+          (renderDate(e.dob.date).match(formattedDob) && !userName) ||
+          (e.name.first.toLowerCase().includes(userName.toLowerCase()) && !DOB)
+        ) {
+          return e;
+        }
+
+        // if (userName && DOB) {
+        //   e.name.first.toLowerCase().includes(userName.toLowerCase());
+        //   renderDate(e.dob.date).match(formattedDob);
+        //   return e;
+        // }
+      });
+    }
+    return userList.map((e) => (
+      <TableRow key={e.login.uuid}>
         <TableData width="5%">
           <CheckBox type="checkbox"></CheckBox>
         </TableData>
@@ -82,7 +104,7 @@ function Table() {
         dataLength={randomUser.length}
         next={() => fetchData()}
         hasMore={true}
-        loader={<h1>loading...</h1>}
+        height={175}
       >
         <TableBody>{renderTableBody()}</TableBody>
       </InfiniteScroll>

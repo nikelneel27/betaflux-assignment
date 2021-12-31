@@ -14,10 +14,16 @@ export const FilterSection = styled.section`
 
 export const Search = styled.input`
   outline: none;
-  border: 1px solid #ccc;
-  background-color: #e9e3ff;
+  border: none;
+  background-color: #f4f7fe;
   opacity: 0.5;
   height: 44px;
+  border-radius: 8px;
+  max-width: 266px;
+  width: 100%;
+  height: 44px;
+  padding: 5px 16px 5px 16px;
+  box-shadow: 1px 1px 1px #dadbe4;
 `;
 
 export const StatusFilter = styled.select`

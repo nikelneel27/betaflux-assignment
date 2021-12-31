@@ -8,7 +8,6 @@ export const TableSection = styled.table`
 
 export const TableBody = styled.tbody`
   height: 300px;
-  overflow: scroll;
   margin-bottom: 50px;
   display: block;
 `;
