@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, ComingSoonImage, ComingSoonText } from "./styles";
-import SiteImage from "../site.svg";
+import SiteImage from "../../assets/site.svg";
 
 function WebsiteUnderConstruction() {
   return (

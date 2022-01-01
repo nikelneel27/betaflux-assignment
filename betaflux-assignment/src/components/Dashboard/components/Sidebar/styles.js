@@ -35,6 +35,7 @@ export const SideBarItems = styled.ul`
   margin-top: 50px;
 `;
 export const SideBarItem = styled.li`
+  cursor: pointer;
   list-style: none;
   font-size: 18px;
   font-weight: 500;

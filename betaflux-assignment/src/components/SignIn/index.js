@@ -20,7 +20,7 @@ function SignIn() {
   const createUser = async (email, password) => {
     try {
       await auth.createUserWithEmailAndPassword(email, password).then(() => {
-        navigate("/dashboard");
+        navigate("/dashboard/main");
       });
     } catch (err) {
       console.error(err);
