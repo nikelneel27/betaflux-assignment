@@ -2,6 +2,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import SignIn from "./components/SignIn";
+import ForgotPassword from "./components/ForgotPassword";
 import WebUnderConstruction from "./components/WebUnderConstruction";
 import Main from "./components/Dashboard/components/Main/index";
 
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="main" element={<Main />} />

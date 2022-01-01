@@ -13,19 +13,22 @@ export const Container = styled.div`
 `;
 
 export const MainDiv = styled.div`
-  max-width: 240px;
-  padding: 20px;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 15px;
   border-radius: 20px;
   width: 100%;
-  height: 40px;
+  height: 25%;
   background-color: #4318ff;
   color: #fff;
   text-align: left;
+  align-items: center;
 `;
 export const Title = styled.h1`
   font-size: 34px;
   font-weight: 700;
   margin: 0;
+  margin-bottom: 10px;
 `;
 export const TextVal = styled.p`
   margin: 0;
@@ -56,7 +59,14 @@ export const SubDiv = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const IconDiv = styled.div``;
+export const IconDiv = styled.div`
+  max-width: 20px;
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  top: 11%;
+  right: 10%;
+`;
 
 export const RecentIconDiv = styled.div`
   background-color: #f4f7fe;
@@ -67,6 +77,9 @@ export const RecentIconDiv = styled.div`
   border-radius: 42px;
   align-items: center;
   margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BillDiv = styled.div`
@@ -74,7 +87,12 @@ export const BillDiv = styled.div`
   width: 100%;
   padding: 10px;
 `;
-export const Icon = styled.i``;
+export const Icon = styled.i`
+  max-width: 20px;
+  width: 100%;
+  height: 20px;
+  color: #fff;
+`;
 export const RecentIcon = styled.i`
   font-size: 22px;
   align-items: center;
@@ -83,8 +101,8 @@ export const RecentIcon = styled.i`
 
 export const ImageDiv = styled.div`
   position: absolute;
-  top: 65px;
-  right: 10px;
+  top: 22%;
+  right: 10%;
   align-items: center;
 `;
 export const Image = styled.img``;

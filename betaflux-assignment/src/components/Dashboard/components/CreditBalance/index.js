@@ -25,7 +25,7 @@ function CreditBalance() {
     <Container>
       <MainDiv>
         <IconDiv>
-          <Icon class="fas fa-ellipsis-h"></Icon>
+          <Icon className="fas fa-ellipsis-h"></Icon>
         </IconDiv>
 
         <TextVal color="#fff">Credit Balance</TextVal>
