@@ -1,8 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Analytics from "../Analytics";
 import UserData from "../UserData";
 import { auth } from "../../../../firebase";
 import { useNavigate } from "react-router-dom";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 import {
   Container,
   MainContainer,
@@ -24,7 +27,6 @@ function Main() {
       alert(err.message);
     }
   };
-
   return (
     <MainContainer>
       <WelcomeDiv>
@@ -41,7 +43,29 @@ function Main() {
 
       <Container>
         <Analytics></Analytics>
-        <UserData></UserData>
+
+        <Suspense
+          fallback={
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "90px",
+              }}
+            >
+              <Loader
+                type="Rings"
+                color="#00BFFF"
+                height={200}
+                width={200}
+                timeout={8000} //3 secs
+              />
+            </div>
+          }
+        >
+          <UserData></UserData>
+        </Suspense>
       </Container>
     </MainContainer>
   );

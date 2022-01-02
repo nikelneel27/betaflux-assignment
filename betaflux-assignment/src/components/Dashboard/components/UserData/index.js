@@ -7,7 +7,7 @@ import React, {
 } from "react";
 
 import Table from "../Table";
-import { userdata } from "../../../../apis/userdata";
+import { fetchUserData } from "../../../../apis/userdata";
 
 import {
   Container,
@@ -21,12 +21,14 @@ import {
 
 export const UserContext = createContext();
 // suspense implementation
-const resource = userdata();
+const resource = fetchUserData();
 
 function UserData() {
   const [userName, setUserName] = useState("");
   const [DOB, setDOB] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
+
+  const user = resource.user.read();
 
   return (
     <UserContext.Provider value={{ userName, DOB, selectedStatus }}>
@@ -58,9 +60,7 @@ function UserData() {
             </StatusFilter>
           </FilterSectionDiv>
         </FilterSection>
-        <Suspense fallback={<h1>Loading Data</h1>}>
-          <Table />
-        </Suspense>
+        <Table userData={user} />
       </Container>
     </UserContext.Provider>
   );

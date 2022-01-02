@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext, Suspense } from "react";
 import { userdata } from "../../../../apis/userdata";
+import { fetchUserData } from "../../../../apis/userdata";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { UserContext } from "../UserData/index";
 import {
@@ -14,15 +15,19 @@ import {
   UserImage,
 } from "./styles";
 
-function Table() {
+function Table(props) {
   const { userName, DOB, selectedStatus } = useContext(UserContext);
 
+  // const resource = fetchUserData();
   const [randomUser, SetRandomUser] = useState([]);
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const randomStatus = ["Answered", "Pending", "Approved", "Rejected"];
+  useEffect(() => {
+    props.userData.forEach((object) => {
+      object.status =
+        randomStatus[Math.floor(Math.random() * randomStatus.length)];
+    });
+    SetRandomUser(props.userData);
+  }, []);
 
   const fetchData = () => {
     userdata().then((results) => {
@@ -77,8 +82,6 @@ function Table() {
         // }
       });
     }
-    //suspense
-    const resource = userdata();
 
     return userList.map((e) => (
       <TableRow key={e.login.uuid}>
@@ -124,7 +127,9 @@ function Table() {
         hasMore={true}
         height={180}
       >
+        {/* <Suspense fallback={<div>Loading Data..</div>}> */}
         <TableBody>{renderTableBody()}</TableBody>
+        {/* </Suspense> */}
       </InfiniteScroll>
     </TableSection>
   );

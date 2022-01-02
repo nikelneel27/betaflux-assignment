@@ -80,7 +80,6 @@ const option = {
 
 class Chart extends React.Component {
   render() {
-    console.log("****", randomData);
     return (
       <Container>
         <ReactEcharts
