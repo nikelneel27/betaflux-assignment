@@ -6,7 +6,7 @@ export const Container = styled.div`
 export const WelcomeText = styled.p`
   font-size: 14px;
   font-weight: 700;
-  margin: 4px;
+  margin: 0px;
   color: #707eae;
   &:nth-child(2) {
     font-size: 34px;

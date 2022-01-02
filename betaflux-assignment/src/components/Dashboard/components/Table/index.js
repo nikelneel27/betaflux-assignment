@@ -77,20 +77,18 @@ function Table() {
         // }
       });
     }
+    //suspense
+    const resource = userdata();
+
     return userList.map((e) => (
       <TableRow key={e.login.uuid}>
         <TableData width="5%">
           <CheckBox type="checkbox"></CheckBox>
         </TableData>
 
-        <TableData width="20%">
-          <span>
-            <UserImage src={e.picture.thumbnail} alt="" />
-          </span>
-          <span>
-            {" "}
-            {e.name.first} {e.name.last}
-          </span>
+        <TableData width="20%" align={true}>
+          <UserImage src={e.picture.thumbnail} alt="" />
+          {e.name.first} {e.name.last}
         </TableData>
 
         <TableData width="30%">
@@ -124,7 +122,7 @@ function Table() {
         dataLength={randomUser.length}
         next={() => fetchData()}
         hasMore={true}
-        height={210}
+        height={180}
       >
         <TableBody>{renderTableBody()}</TableBody>
       </InfiniteScroll>

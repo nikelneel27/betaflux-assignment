@@ -4,6 +4,10 @@ import ReactEcharts from "echarts-for-react";
 import * as echarts from "echarts";
 import { Container } from "./styles";
 //
+const randomData = Array.from({ length: 12 }, () =>
+  Math.floor(Math.random() * 100)
+);
+
 const option = {
   xAxis: [
     {
@@ -69,26 +73,14 @@ const option = {
           },
         ]),
       },
-      data: [
-        ["1", 0],
-        ["2", 100],
-        ["3", 20],
-        ["4", 40],
-        ["5", 60],
-        ["6", 100],
-        ["7", 90],
-        ["8", 80],
-        ["9", 75],
-        ["10", 100],
-        ["11", 50],
-        ["12", 100],
-      ],
+      data: randomData,
     },
   ],
 };
 
 class Chart extends React.Component {
   render() {
+    console.log("****", randomData);
     return (
       <Container>
         <ReactEcharts

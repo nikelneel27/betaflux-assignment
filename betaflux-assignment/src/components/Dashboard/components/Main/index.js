@@ -15,8 +15,9 @@ function Main() {
   const navigate = useNavigate();
   const logout = () => {
     try {
-      auth.signOut().then(() => {
-        navigate("/");
+      auth.signOut().then(async () => {
+        await localStorage.setItem("loggedIn", false);
+        await navigate("/");
       });
     } catch (err) {
       console.error(err);

@@ -20,7 +20,7 @@ import {
 
 import WaveImage from "../../../../assets/wave.svg";
 
-function CreditBalance() {
+function CreditBalance({ creditBalanceVal }) {
   return (
     <Container>
       <MainDiv>
@@ -29,7 +29,7 @@ function CreditBalance() {
         </IconDiv>
 
         <TextVal color="#fff">Credit Balance</TextVal>
-        <Title>$25,215</Title>
+        <Title>${creditBalanceVal}</Title>
         <ImageDiv>
           <Image src={WaveImage} />
         </ImageDiv>

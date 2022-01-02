@@ -20,6 +20,7 @@ function SignIn() {
   const createUser = async (email, password) => {
     try {
       await auth.createUserWithEmailAndPassword(email, password).then(() => {
+        localStorage.setItem("loggedIn", true);
         navigate("/dashboard/main");
       });
     } catch (err) {

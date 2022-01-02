@@ -8,6 +8,7 @@ import {
   SideBarItems,
   SideBarItem,
   Icon,
+  LogoName,
 } from "./styles";
 import logo from "./Logo.png";
 
@@ -78,11 +79,15 @@ function Sidebar() {
 
   return (
     <SidebarDiv>
-      <Header>
+      <Header
+        onClick={() => {
+          navigate("/dashboard/main");
+        }}
+      >
         <LogoImage src={logo} alt="" />
-        <div>
+        <LogoName>
           FOOBAR<Subtitle>Dashboard</Subtitle>
-        </div>
+        </LogoName>
       </Header>
       <SideBarItems>{sideBarItems()}</SideBarItems>
     </SidebarDiv>

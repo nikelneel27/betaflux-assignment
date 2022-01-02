@@ -3,6 +3,11 @@ import ReactEcharts from "echarts-for-react";
 // import echarts from "echarts"
 import * as echarts from "echarts";
 import { Container } from "./styles";
+
+const randomData = Array.from({ length: 7 }, () =>
+  Math.floor(Math.random() * 200)
+);
+
 const option = {
   xAxis: {
     type: "category",
@@ -41,9 +46,17 @@ const option = {
       show: false,
     },
   },
+  layout: {
+    padding: {
+      left: 50,
+      right: 0,
+      top: 0,
+      bottom: 0,
+    },
+  },
   series: [
     {
-      data: [120, 200, 150, 80, 70, 110, 130],
+      data: randomData,
       type: "bar",
       barWidth: 12,
       showBackground: true,

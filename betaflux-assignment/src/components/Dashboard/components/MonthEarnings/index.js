@@ -2,7 +2,7 @@ import React from "react";
 import { Container, PText, Title, Icon, IconDiv, ChartDiv } from "./styles";
 import Chart from "../Chart";
 
-function MonthEarnings() {
+function MonthEarnings({ randomNumb }) {
   return (
     <Container>
       <IconDiv>
@@ -10,7 +10,7 @@ function MonthEarnings() {
       </IconDiv>
 
       <PText>This month earnings</PText>
-      <Title>$682.5</Title>
+      <Title>${randomNumb}</Title>
       <PText>+2.5%</PText>
       <ChartDiv>
         <Chart />

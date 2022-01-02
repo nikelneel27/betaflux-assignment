@@ -28,15 +28,19 @@ export const Search = styled.input`
 
 export const StatusFilter = styled.select`
   outline: none;
-  border: 1px solid #ccc;
+  border: 2px solid #eeeeee;
   height: 44px;
   margin-left: 20px;
+  border-radius: 4px;
+  color: #b9b9b9;
 `;
 
 export const DateFilter = styled.input`
   outline: none;
-  border: 1px solid #ccc;
+  border: 2px solid #eeeeee;
   height: 44px;
+  border-radius: 4px;
+  color: #b9b9b9;
 `;
 
 export const FilterSectionDiv = styled.div`

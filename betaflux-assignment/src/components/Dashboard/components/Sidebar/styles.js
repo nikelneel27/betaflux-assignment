@@ -21,15 +21,20 @@ export const Header = styled.header`
   height: 100px;
 `;
 export const Subtitle = styled.p`
+  cursor: pointer;
   font-size: 12px;
   font-weight: 500;
   margin: 0;
 `;
 export const LogoImage = styled.img`
+  cursor: pointer;
   width: 100%;
   height: 44px;
   max-width: 44px;
   margin-right: 5px;
+`;
+export const LogoName = styled.div`
+  cursor: pointer;
 `;
 export const SideBarItems = styled.ul`
   margin-top: 50px;

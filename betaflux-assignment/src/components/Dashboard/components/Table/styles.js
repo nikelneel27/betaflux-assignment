@@ -32,7 +32,7 @@ export const Th = styled.th`
   }
 `;
 export const TableData = styled.td`
-  padding: 10px 0;
+  padding: 5px 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

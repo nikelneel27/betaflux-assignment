@@ -9,9 +9,7 @@ export const Container = styled.div`
 `;
 
 export const ComingSoonImage = styled.img`
-  margin-top: 10%;
   width: 100%;
-  max-width: 600px;
 `;
 
 export const ComingSoonText = styled.p`

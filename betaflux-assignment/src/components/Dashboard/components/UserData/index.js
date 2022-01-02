@@ -7,6 +7,7 @@ import React, {
 } from "react";
 
 import Table from "../Table";
+import { userdata } from "../../../../apis/userdata";
 
 import {
   Container,
@@ -19,6 +20,8 @@ import {
 } from "./styles";
 
 export const UserContext = createContext();
+// suspense implementation
+const resource = userdata();
 
 function UserData() {
   const [userName, setUserName] = useState("");
@@ -55,7 +58,9 @@ function UserData() {
             </StatusFilter>
           </FilterSectionDiv>
         </FilterSection>
-        <Table />
+        <Suspense fallback={<h1>Loading Data</h1>}>
+          <Table />
+        </Suspense>
       </Container>
     </UserContext.Provider>
   );
