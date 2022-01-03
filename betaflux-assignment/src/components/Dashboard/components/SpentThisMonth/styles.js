@@ -31,7 +31,12 @@ export const Title = styled.h1`
   font-weight: 700;
   color: #1b2559;
 `;
+export const Icon = styled.i`
+  margin-right: 2px;
+`;
+
 export const Text = styled.p``;
+
 export const ChartDiv = styled.div`
   width: 100%;
   max-width: 350px;

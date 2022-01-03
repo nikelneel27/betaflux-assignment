@@ -31,6 +31,21 @@ export const Th = styled.th`
     padding: 0 3px 0 3px;
   }
 `;
+export const NoDataDiv = styled.div`
+  color: #a3aed0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 20px;
+  div {
+    text-align: center;
+  }
+  i {
+    font-size: 50px;
+    max-width: 50px;
+    margin: 0;
+  }
+`;
 export const TableData = styled.td`
   padding: 5px 0;
   overflow: hidden;

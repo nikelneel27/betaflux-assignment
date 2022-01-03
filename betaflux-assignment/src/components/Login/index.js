@@ -10,6 +10,7 @@ import {
   TextWrapper,
   DivWrapper,
   NewUserSection,
+  MainContainer,
 } from "./styles";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -17,20 +18,24 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
+
   useEffect(() => {
     const isLoggedIn = JSON.parse(localStorage.getItem("loggedIn"));
     isLoggedIn && navigate("/dashboard/main");
   }, []);
+
   const loginUser = async (email, password) => {
     try {
       await auth.signInWithEmailAndPassword(email, password).then(() => {
-        localStorage.setItem("loggedIn", true);
+        localStorage.setItem("loggedIn", rememberMe);
         navigate("/dashboard/main");
       });
     } catch (err) {
-      console.error(err);
-      alert(err.message);
+      setErrorMessage(err.message);
     }
   };
 
@@ -38,8 +43,13 @@ function Login() {
     navigate("/forgot-password");
   };
 
+  const rememberMeClick = (e) => {
+    const checked = e.target.checked;
+    setRememberMe(checked);
+  };
+
   return (
-    <div>
+    <MainContainer>
       <Container>
         <WelcomeSection>Welcome!</WelcomeSection>
         <LoginSection>
@@ -53,24 +63,28 @@ function Login() {
           <DivWrapper>
             <Label>Password</Label>
             <Input
+              type="password"
               placeholder="Enter password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </DivWrapper>
-          <TextWrapper onClick={() => forgotPassword(email)}>
+          <TextWrapper onClick={() => forgotPassword()}>
             Forgot our password?
           </TextWrapper>
           <TextWrapper>
-            <Input type="checkbox" />
+            <Input type="checkbox" onClick={(e) => rememberMeClick(e)} />
             Remember me next time
           </TextWrapper>
+          {errorMessage && (
+            <TextWrapper color={"red"}>*{errorMessage}</TextWrapper>
+          )}
           <Button onClick={() => loginUser(email, password)}>Log in</Button>
         </LoginSection>
         <NewUserSection>
-          New user? <Link to="/signin">Sign Up</Link>
+          New user? <Link to="/signup">Sign Up</Link>
         </NewUserSection>
       </Container>
-    </div>
+    </MainContainer>
   );
 }
 

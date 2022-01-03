@@ -10,7 +10,7 @@ import {
   Icon,
   LogoName,
 } from "./styles";
-import logo from "./Logo.png";
+import logo from "../../../../assets/Logo.png";
 
 const sideBarLinks = [
   {

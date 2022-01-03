@@ -16,6 +16,7 @@ import {
 
 function Main() {
   const navigate = useNavigate();
+
   const logout = () => {
     try {
       auth.signOut().then(async () => {
@@ -59,7 +60,7 @@ function Main() {
                 color="#00BFFF"
                 height={200}
                 width={200}
-                timeout={8000} //3 secs
+                timeout={8000}
               />
             </div>
           }

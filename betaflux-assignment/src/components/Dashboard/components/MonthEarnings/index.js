@@ -1,5 +1,14 @@
 import React from "react";
-import { Container, PText, Title, Icon, IconDiv, ChartDiv } from "./styles";
+import {
+  Container,
+  PText,
+  Title,
+  Icon,
+  IconDiv,
+  ChartDiv,
+  PTextDiv,
+  PTextMainDiv,
+} from "./styles";
 import Chart from "../Chart";
 
 function MonthEarnings({ randomNumb }) {
@@ -9,9 +18,16 @@ function MonthEarnings({ randomNumb }) {
         <Icon className="fa fa-chart-bar"></Icon>
       </IconDiv>
 
-      <PText>This month earnings</PText>
+      <PText color={"#A3AED0"}>This month earnings</PText>
       <Title>${randomNumb}</Title>
-      <PText>+2.5%</PText>
+      <PTextMainDiv>
+        <PTextDiv>
+          <PText color={"#05CD99"} margin={"0px"}>
+            +2.5%
+          </PText>
+        </PTextDiv>
+      </PTextMainDiv>
+
       <ChartDiv>
         <Chart />
       </ChartDiv>

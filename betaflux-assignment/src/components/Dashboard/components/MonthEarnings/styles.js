@@ -13,21 +13,29 @@ export const Container = styled.div`
 `;
 
 export const PText = styled.p`
-  margin: 20px 0 0 0;
-  color: #a3aed0;
+  margin: ${(props) => (props.margin ? props.margin : "20px 0px 0px 0px")};
   font-weight: 500;
   font-size: 14px;
-
-  &:nth-child(4) {
-    color: #05cd99;
-    margin-top: 10px;
-  }
+  color: ${(props) => props.color};
 `;
 export const Title = styled.p`
   font-size: 34px;
   margin: 0;
   font-weight: 700;
   color: #1b2559;
+`;
+export const PTextMainDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PTextDiv = styled.div`
+  background-color: #05cd991a;
+  border-radius: 15px;
+  max-width: 58px;
+  padding: 4px;
+  width: 100%;
 `;
 export const Text = styled.p``;
 export const Icon = styled.i`

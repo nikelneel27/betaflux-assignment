@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext, Suspense } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { userdata } from "../../../../apis/userdata";
-import { fetchUserData } from "../../../../apis/userdata";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { UserContext } from "../UserData/index";
 import {
@@ -13,12 +12,12 @@ import {
   TableHead,
   TableBody,
   UserImage,
+  NoDataDiv,
 } from "./styles";
 
 function Table(props) {
   const { userName, DOB, selectedStatus } = useContext(UserContext);
 
-  // const resource = fetchUserData();
   const [randomUser, SetRandomUser] = useState([]);
   const randomStatus = ["Answered", "Pending", "Approved", "Rejected"];
   useEffect(() => {
@@ -57,11 +56,11 @@ function Table(props) {
     return dob;
   };
 
+  let userList = randomUser;
   const renderTableBody = () => {
     const dob = DOB.split("-");
     const formattedDob = `${dob[2]}.${dob[1]}.${dob[0]}`;
 
-    let userList = randomUser;
     if (userName !== "" || DOB !== "" || selectedStatus !== "") {
       userList = randomUser.filter((e) => {
         if (
@@ -81,6 +80,18 @@ function Table(props) {
         //   return e;
         // }
       });
+      var myDiv = document.querySelector(".infinite-scroll-component");
+      myDiv.scrollTop = 0;
+    }
+    if (!userList.length) {
+      return (
+        <NoDataDiv>
+          <div>
+            <i class="fas fa-database"></i>
+            <h3>No data found</h3>
+          </div>
+        </NoDataDiv>
+      );
     }
 
     return userList.map((e) => (
@@ -122,14 +133,12 @@ function Table(props) {
         </TableRow>
       </TableHead>
       <InfiniteScroll
-        dataLength={randomUser.length}
+        dataLength={userList.length}
         next={() => fetchData()}
         hasMore={true}
         height={180}
       >
-        {/* <Suspense fallback={<div>Loading Data..</div>}> */}
         <TableBody>{renderTableBody()}</TableBody>
-        {/* </Suspense> */}
       </InfiniteScroll>
     </TableSection>
   );

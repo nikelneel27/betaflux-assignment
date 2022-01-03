@@ -1,9 +1,8 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
-// import echarts from "echarts"
 import * as echarts from "echarts";
 import { Container } from "./styles";
-//
+
 const randomData = Array.from({ length: 12 }, () =>
   Math.floor(Math.random() * 100)
 );
@@ -32,8 +31,6 @@ const option = {
   ],
   yAxis: [
     {
-      // type: "value",
-      // boundaryGap: ["90%", "20%"],
       axisLine: {
         show: false,
       },

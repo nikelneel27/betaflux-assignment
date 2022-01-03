@@ -9,28 +9,30 @@ import {
   Button,
   DivWrapper,
   NewUserSection,
+  MainContainer,
+  TextWrapper,
 } from "./styles";
 import { auth } from "../../firebase";
 
-function SignIn() {
+function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const createUser = async (email, password) => {
     try {
       await auth.createUserWithEmailAndPassword(email, password).then(() => {
-        localStorage.setItem("loggedIn", true);
         navigate("/dashboard/main");
       });
     } catch (err) {
-      console.error(err);
-      alert(err.message);
+      setErrorMessage(err.message);
     }
   };
 
   return (
-    <div>
+    <MainContainer>
       <Container>
         <WelcomeSection>Welcome!</WelcomeSection>
         <LoginSection>
@@ -46,20 +48,23 @@ function SignIn() {
           <DivWrapper>
             <Label>Password</Label>
             <Input
-              type="text"
+              type="password"
               required
               placeholder="Enter password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </DivWrapper>
+          {errorMessage && (
+            <TextWrapper color={"red"}>*{errorMessage}</TextWrapper>
+          )}
           <Button onClick={() => createUser(email, password)}>Sign Up</Button>
         </LoginSection>
         <NewUserSection>
           New user? <Link to="/">Log In</Link>
         </NewUserSection>
       </Container>
-    </div>
+    </MainContainer>
   );
 }
 
-export default SignIn;
+export default SignUp;

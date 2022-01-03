@@ -1,7 +1,5 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
-// import echarts from "echarts"
-import * as echarts from "echarts";
 import { Container } from "./styles";
 
 const randomData = Array.from({ length: 7 }, () =>

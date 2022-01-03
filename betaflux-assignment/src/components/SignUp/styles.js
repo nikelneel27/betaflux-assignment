@@ -1,14 +1,20 @@
 import styled from "styled-components";
 
+export const MainContainer = styled.div`
+  height: 100vh;
+  background-color: #ccc;
+`;
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+
   display: grid;
   background-color: #ccc;
   justify-content: center;
   align-items: center;
 `;
+
 export const WelcomeSection = styled.h1`
+  margin: 100px 0 0 0;
   font-size: 32px;
   font-weight: 700;
   line-height: 34px;
@@ -49,6 +55,7 @@ export const Button = styled.button`
 
 export const TextWrapper = styled.p`
   color: #5887ff;
+  color: ${(props) => (props.color ? props.color : "#5887ff")};
 `;
 
 export const DivWrapper = styled.div`
@@ -59,4 +66,5 @@ export const NewUserSection = styled.div`
   color: #333333;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 `;

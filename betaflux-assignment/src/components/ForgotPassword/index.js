@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -23,12 +24,9 @@ function ForgotPassword() {
       .then(() => {
         alert("Please check your email...");
         navigate("/");
-        // ..
       })
       .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        alert(errorMessage);
+        setErrorMessage(error.message);
       });
   };
   return (
@@ -43,6 +41,9 @@ function ForgotPassword() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </DivWrapper>
+        {errorMessage && (
+          <TextWrapper color={"red"}>*{errorMessage}</TextWrapper>
+        )}
         <Button onClick={() => forgotPassword(email)}>Reset Password</Button>
       </LoginSection>
     </Container>

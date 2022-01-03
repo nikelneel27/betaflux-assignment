@@ -45,10 +45,11 @@ export const Button = styled.button`
   border: none;
   border-radius: 4px;
   height: 44px;
+  margin-top: 20px;
 `;
 
 export const TextWrapper = styled.p`
-  color: #5887ff;
+  color: ${(props) => props.color};
 `;
 
 export const DivWrapper = styled.div`

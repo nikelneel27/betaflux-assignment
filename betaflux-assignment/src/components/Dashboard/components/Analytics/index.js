@@ -10,6 +10,7 @@ function Analytics() {
     randomNumber();
     creditBalance();
   }, []);
+  
   const [randomNumb, setRandomNumb] = useState("");
   const [creditBalanceVal, setCreditBalanceVal] = useState("");
 
